@@ -50,6 +50,11 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-core', version: '1.9.5'
 
     integTestCompile group: 'org.codehaus.groovy', name: 'groovy', version: '2.0.8'
+
+    integTestCompile group: 'org.springframework', name: 'spring-core', version: '4.3.2.RELEASE'
+    integTestCompile group: 'org.springframework', name: 'spring-beans', version: '4.3.2.RELEASE'
+    integTestCompile group: 'org.springframework', name: 'spring-context', version: '4.3.2.RELEASE'
+    integTestCompile group: 'org.springframework', name: 'spring-test', version: '4.3.2.RELEASE'
 }
 
 task wrapper(type: Wrapper) {
@@ -145,6 +150,12 @@ artifacts {
     archives jar
     archives javadocJar
     archives sourcesJar
+}
+
+eclipse {
+    classpath {
+        plusConfigurations += [ configurations.integTestRuntime ]
+    }
 }
 
 // -- build and publish artifacts -------------------------------------------------------------------------------------
